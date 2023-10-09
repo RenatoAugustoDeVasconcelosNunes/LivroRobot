@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231009 15:01:14.278" rpa="false" schemaversion="4">
+<suite id="s1" name="Bookstore-Demo-Test" source="C:\Automação com Robot\LivroRobot\bookstore-demo-test">
+<suite id="s1-s1" name="Register Test" source="C:\Automação com Robot\LivroRobot\bookstore-demo-test\register_test.robot">
+<test id="s1-s1-t1" name="Scenario: Success sign in as Natural Person" line="21">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>url=http://amazon.com.br</arg>
+<arg>browser=chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231009 15:01:14.421" level="INFO">Opening browser 'chrome' to base url 'http://amazon.com.br'.</msg>
+<status status="PASS" starttime="20231009 15:01:14.421" endtime="20231009 15:01:18.456"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20231009 15:01:18.456" endtime="20231009 15:01:18.581"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Comece aqui</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20231009 15:01:18.581" endtime="20231009 15:01:18.654"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${COMECE_AQUI}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231009 15:01:18.658" level="INFO">Clicking element '//div[@class='nav-signin-tooltip-footer']//a[@class='nav-a'][normalize-space()='Comece aqui.']'.</msg>
+<status status="PASS" starttime="20231009 15:01:18.654" endtime="20231009 15:01:19.328"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231009 15:01:24.328" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20231009 15:01:19.328" endtime="20231009 15:01:24.328"/>
+</kw>
+<status status="PASS" starttime="20231009 15:01:14.421" endtime="20231009 15:01:24.328"/>
+</test>
+<status status="PASS" starttime="20231009 15:01:14.294" endtime="20231009 15:01:24.328"/>
+</suite>
+<status status="PASS" starttime="20231009 15:01:14.278" endtime="20231009 15:01:24.328"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Bookstore-Demo-Test">Bookstore-Demo-Test</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Register Test">Bookstore-Demo-Test.Register Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
