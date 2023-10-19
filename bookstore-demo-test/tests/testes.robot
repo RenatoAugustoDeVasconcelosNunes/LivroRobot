@@ -11,7 +11,7 @@ Documentation    # Cenário:	Cadastro	com	sucesso	de	Pessoa	Física
 
 Library    SeleniumLibrary
 Resource    ../resources/page_objects/po_pagina_cadastro.resource
-Resource    ../common.robot
+Resource    ../resources/common..resource
 
 
 *** Variables ***

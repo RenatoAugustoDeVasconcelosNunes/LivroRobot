@@ -1,6 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
-Resource    config_resource.robot
+Resource    config.resource
 
 *** Keywords ***
 Abrir site Amazon.com
