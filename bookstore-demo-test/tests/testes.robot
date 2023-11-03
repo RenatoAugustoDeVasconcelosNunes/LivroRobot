@@ -10,22 +10,25 @@ Documentation    # Cenário:	Cadastro	com	sucesso	de	Pessoa	Física
 #            E devo visualizar a opção de acessar minha lista de desejos
 
 Library    SeleniumLibrary
-Resource    ../resources/page_objects/po_pagina_cadastro.resource
+Library    FakerLibrary
+Library    OperatingSystem
+Resource    ../resources/page_objects/po_func_cadastro.resource
 Resource    ../resources/common..resource
-
-
-*** Variables ***
-${nome}    Teste
-${email_or_telefone}    teste@teste.com
-${senha}    Teste@teste
-
+Resource    ../resources/pages/cadastro.resource
 
 
 *** Test Cases ***
 Scenario: Success sign in as Natural Person
-    Abrir site Amazon.com   
-    Realizar novo cadastro    ${nome}    ${email_or_telefone}    ${senha}
+    ${nome}    FakerLibrary.Name Male
+    ${emailTelefone}    FakerLibrary.Email
+    ${senha}    FakerLibrary.Password
     
+
+    Abrir site Amazon.com   
+    Realizar novo cadastro    ${nome}    ${emailTelefone}    ${senha}    
+    ...                       msg_validação=Resolva este quebra-cabeça para proteger sua conta    
+    
+
 
 
 
