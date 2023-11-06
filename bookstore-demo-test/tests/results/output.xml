@@ -1,115 +1,196 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231103 10:14:04.566" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231106 11:14:48.456" rpa="false" schemaversion="4">
 <suite id="s1" name="Testes" source="C:\Automação com Robot\LivroRobot\bookstore-demo-test\tests\testes.robot">
-<test id="s1-t1" name="Scenario: Success sign in as Natural Person" line="21">
-<kw name="Name Male" library="FakerLibrary">
-<var>${nome}</var>
-<msg timestamp="20231103 10:14:04.943" level="INFO">${nome} = Carl Little</msg>
-<status status="PASS" starttime="20231103 10:14:04.943" endtime="20231103 10:14:04.943"/>
-</kw>
-<kw name="Email" library="FakerLibrary">
-<var>${emailTelefone}</var>
-<msg timestamp="20231103 10:14:04.943" level="INFO">${emailTelefone} = pnelson@example.org</msg>
-<status status="PASS" starttime="20231103 10:14:04.943" endtime="20231103 10:14:04.943"/>
-</kw>
-<kw name="Password" library="FakerLibrary">
-<var>${senha}</var>
-<doc>Generate a random password of the specified ``length``.</doc>
-<msg timestamp="20231103 10:14:04.943" level="INFO">${senha} = !1UFMSx)$i</msg>
-<status status="PASS" starttime="20231103 10:14:04.943" endtime="20231103 10:14:04.943"/>
-</kw>
+<test id="s1-t1" name="Adicionar produto ao carrinho" line="34">
 <kw name="Abrir site Amazon.com" library="common.">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>url=http://amazon.com.br</arg>
 <arg>browser=chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20231103 10:14:04.943" level="INFO">Opening browser 'chrome' to base url 'http://amazon.com.br'.</msg>
-<msg timestamp="20231103 10:14:05.292" level="WARN">The chromedriver version (117.0.5938.149) detected in PATH at C:\Users\renat\AppData\Local\Programs\Python\Python312\Scripts\chromedriver.exe might not be compatible with the detected chrome version (118.0.5993.120); currently, chromedriver 118.0.5993.70 is recommended for chrome 118.*, so it is advised to delete the driver in PATH and retry</msg>
-<status status="PASS" starttime="20231103 10:14:04.943" endtime="20231103 10:14:08.636"/>
+<msg timestamp="20231106 11:14:48.833" level="INFO">Opening browser 'chrome' to base url 'http://amazon.com.br'.</msg>
+<msg timestamp="20231106 11:14:49.222" level="WARN">The chromedriver version (117.0.5938.149) detected in PATH at C:\Users\renat\AppData\Local\Programs\Python\Python312\Scripts\chromedriver.exe might not be compatible with the detected chrome version (118.0.5993.120); currently, chromedriver 118.0.5993.70 is recommended for chrome 118.*, so it is advised to delete the driver in PATH and retry</msg>
+<status status="PASS" starttime="20231106 11:14:48.833" endtime="20231106 11:14:52.885"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20231103 10:14:08.636" endtime="20231103 10:14:08.774"/>
+<status status="PASS" starttime="20231106 11:14:52.885" endtime="20231106 11:14:53.031"/>
 </kw>
-<status status="PASS" starttime="20231103 10:14:04.943" endtime="20231103 10:14:08.781"/>
+<status status="PASS" starttime="20231106 11:14:48.833" endtime="20231106 11:14:53.031"/>
 </kw>
-<kw name="Realizar novo cadastro" library="cadastro">
-<arg>${nome}</arg>
-<arg>${emailTelefone}</arg>
-<arg>${senha}</arg>
-<arg>msg_validação=Resolva este quebra-cabeça para proteger sua conta</arg>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>Comece aqui</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20231103 10:14:08.781" endtime="20231103 10:14:08.856"/>
+<kw name="Pesquisar produto" library="pesquisar_produto">
+<arg>nome_produto=${nome_produto}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${campo_pesquisa}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231106 11:14:53.031" endtime="20231106 11:14:53.072"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>${comece_aqui}</arg>
+<arg>${campo_pesquisa}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231103 10:14:08.856" level="INFO">Clicking element '//div[@class='nav-signin-tooltip-footer']//a[@class='nav-a'][normalize-space()='Comece aqui.']'.</msg>
-<status status="PASS" starttime="20231103 10:14:08.856" endtime="20231103 10:14:09.513"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${seu_nome}</arg>
-<arg>timeout=5</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20231103 10:14:09.513" endtime="20231103 10:14:09.538"/>
+<msg timestamp="20231106 11:14:53.072" level="INFO">Clicking element 'id:twotabsearchtextbox'.</msg>
+<status status="PASS" starttime="20231106 11:14:53.072" endtime="20231106 11:14:53.229"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<arg>${seu_nome}</arg>
-<arg>${nome}</arg>
+<arg>${campo_pesquisa}</arg>
+<arg>${nome_produto}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231103 10:14:09.538" level="INFO">Typing text 'Carl Little' into text field 'id:ap_customer_name'.</msg>
-<status status="PASS" starttime="20231103 10:14:09.538" endtime="20231103 10:14:09.608"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${email_ou_telefone}</arg>
-<arg>${emailTelefone}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231103 10:14:09.608" level="INFO">Typing text 'pnelson@example.org' into text field 'id:ap_email'.</msg>
-<status status="PASS" starttime="20231103 10:14:09.608" endtime="20231103 10:14:09.709"/>
-</kw>
-<kw name="Input Password" library="SeleniumLibrary">
-<arg>${password}</arg>
-<arg>${senha}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20231103 10:14:09.709" level="INFO">Typing password into text field 'id:ap_password'.</msg>
-<msg timestamp="20231103 10:14:09.733" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20231103 10:14:09.781" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20231103 10:14:09.709" endtime="20231103 10:14:09.781"/>
-</kw>
-<kw name="Input Password" library="SeleniumLibrary">
-<arg>${confirma_senha}</arg>
-<arg>${senha}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20231103 10:14:09.783" level="INFO">Typing password into text field 'id:ap_password_check'.</msg>
-<msg timestamp="20231103 10:14:09.805" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20231103 10:14:09.854" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20231103 10:14:09.781" endtime="20231103 10:14:09.854"/>
+<msg timestamp="20231106 11:14:53.229" level="INFO">Typing text 'Fralda Bigfral Plus XG 7 Unidades' into text field 'id:twotabsearchtextbox'.</msg>
+<status status="PASS" starttime="20231106 11:14:53.229" endtime="20231106 11:14:53.417"/>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
-<arg>${button_continue}</arg>
+<arg>${bt_pesquisar}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20231103 10:14:09.854" level="INFO">Clicking button 'id:continue'.</msg>
-<status status="PASS" starttime="20231103 10:14:09.854" endtime="20231103 10:14:10.598"/>
+<msg timestamp="20231106 11:14:53.417" level="INFO">Clicking button 'id:nav-search-submit-button'.</msg>
+<status status="PASS" starttime="20231106 11:14:53.417" endtime="20231106 11:14:55.615"/>
 </kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20231103 10:14:15.599" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20231103 10:14:10.598" endtime="20231103 10:14:15.599"/>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${nome_produto}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20231106 11:14:55.615" endtime="20231106 11:14:55.632"/>
 </kw>
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>${msg_validação}</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20231103 10:14:15.622" level="INFO">Current page contains text 'Resolva este quebra-cabeça para proteger sua conta'.</msg>
-<status status="PASS" starttime="20231103 10:14:15.599" endtime="20231103 10:14:15.622"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//span[normalize-space()='${nome_produto}']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231106 11:14:55.632" level="INFO">Clicking element '//span[normalize-space()='Fralda Bigfral Plus XG 7 Unidades']'.</msg>
+<status status="PASS" starttime="20231106 11:14:55.632" endtime="20231106 11:14:58.668"/>
 </kw>
-<status status="PASS" starttime="20231103 10:14:08.781" endtime="20231103 10:14:15.622"/>
+<status status="PASS" starttime="20231106 11:14:53.031" endtime="20231106 11:14:58.668"/>
 </kw>
-<status status="PASS" starttime="20231103 10:14:04.943" endtime="20231103 10:14:15.622"/>
+<kw name="Adicionar produto no carrinho" library="adicionar_produto_carrinho">
+<arg>qtd_produto=6</arg>
+<kw name="Log" library="BuiltIn">
+<arg>Qtd Produto: ${qtd_produto}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231106 11:14:58.668" level="INFO">Qtd Produto: 6</msg>
+<status status="PASS" starttime="20231106 11:14:58.668" endtime="20231106 11:14:58.668"/>
+</kw>
+<if>
+<branch type="IF" condition="${qtd_produto} &gt; 1">
+<kw name="Log" library="BuiltIn">
+<arg>Entrou no IF</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231106 11:14:58.668" level="INFO">Entrou no IF</msg>
+<status status="PASS" starttime="20231106 11:14:58.668" endtime="20231106 11:14:58.668"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${bt_adicionar}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231106 11:14:58.668" endtime="20231106 11:14:58.692"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>${campo_qtd_produto}</arg>
+<arg>${qtd_produto}</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20231106 11:14:58.692" level="INFO">Selecting options from selection list 'id:quantity' by value 6.</msg>
+<status status="PASS" starttime="20231106 11:14:58.692" endtime="20231106 11:14:58.814"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${bt_adicionar}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231106 11:14:58.814" level="INFO">Clicking button 'id:add-to-cart-button'.</msg>
+<status status="PASS" starttime="20231106 11:14:58.814" endtime="20231106 11:14:59.846"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Adicionado ao carrinho</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20231106 11:14:59.846" endtime="20231106 11:14:59.897"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${acessar_carrinho}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231106 11:14:59.897" level="INFO">Clicking element 'id:nav-cart-count-container'.</msg>
+<status status="PASS" starttime="20231106 11:14:59.897" endtime="20231106 11:15:00.719"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Carrinho de compras</arg>
+<arg>timeout=10</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20231106 11:15:00.719" endtime="20231106 11:15:00.753"/>
+</kw>
+<kw name="Valida quantidade adicionada ao carrinho" library="validar_adicao_produto">
+<kw name="Get Value" library="SeleniumLibrary">
+<var>${qtd_item_add}</var>
+<arg>${campo_qtd_produto}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<msg timestamp="20231106 11:15:00.774" level="INFO">${qtd_item_add} = 6</msg>
+<status status="PASS" starttime="20231106 11:15:00.754" endtime="20231106 11:15:00.774"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${qtd_carrinho}</var>
+<arg>//span[@class='a-dropdown-prompt'][contains(.,'${qtd_item_add}')]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231106 11:15:00.798" level="INFO">${qtd_carrinho} = 6</msg>
+<status status="PASS" starttime="20231106 11:15:00.774" endtime="20231106 11:15:00.798"/>
+</kw>
+<if>
+<branch type="IF" condition="${qtd_item_add} != ${qtd_carrinho}">
+<kw name="Fail" library="BuiltIn">
+<arg>msg=A quantidade de produto solicitada para adicionar ao carrinho (${qtd_item_add}), está diferente a quantidade exibida no carrinho (${qtd_carrinho}).</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" starttime="20231106 11:15:00.798" endtime="20231106 11:15:00.798"/>
+</kw>
+<status status="NOT RUN" starttime="20231106 11:15:00.798" endtime="20231106 11:15:00.798"/>
+</branch>
+<status status="PASS" starttime="20231106 11:15:00.798" endtime="20231106 11:15:00.798"/>
+</if>
+<status status="PASS" starttime="20231106 11:15:00.753" endtime="20231106 11:15:00.798"/>
+</kw>
+<status status="PASS" starttime="20231106 11:14:58.668" endtime="20231106 11:15:00.798"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>Entrou no ELSE</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20231106 11:15:00.798" endtime="20231106 11:15:00.798"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${bt_adicionar}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" starttime="20231106 11:15:00.798" endtime="20231106 11:15:00.798"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${bt_adicionar}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231106 11:15:00.798" endtime="20231106 11:15:00.798"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Adicionado ao carrinho</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231106 11:15:00.798" endtime="20231106 11:15:00.798"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${acessar_carrinho}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231106 11:15:00.798" endtime="20231106 11:15:00.798"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Carrinho de compras</arg>
+<arg>timeout=10</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231106 11:15:00.798" endtime="20231106 11:15:00.798"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${bt_fechar_pedido}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231106 11:15:00.798" endtime="20231106 11:15:00.798"/>
+</kw>
+<kw name="Valida quantidade adicionada ao carrinho" library="validar_adicao_produto">
+<status status="NOT RUN" starttime="20231106 11:15:00.798" endtime="20231106 11:15:00.798"/>
+</kw>
+<status status="NOT RUN" starttime="20231106 11:15:00.798" endtime="20231106 11:15:00.798"/>
+</branch>
+<status status="PASS" starttime="20231106 11:14:58.668" endtime="20231106 11:15:00.798"/>
+</if>
+<status status="PASS" starttime="20231106 11:14:58.668" endtime="20231106 11:15:00.798"/>
+</kw>
+<status status="PASS" starttime="20231106 11:14:48.833" endtime="20231106 11:15:00.798"/>
 </test>
-<status status="PASS" starttime="20231103 10:14:04.566" endtime="20231103 10:14:15.622"/>
+<status status="PASS" starttime="20231106 11:14:48.456" endtime="20231106 11:15:00.798"/>
 </suite>
 <statistics>
 <total>
@@ -122,6 +203,7 @@
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20231103 10:14:05.292" level="WARN">The chromedriver version (117.0.5938.149) detected in PATH at C:\Users\renat\AppData\Local\Programs\Python\Python312\Scripts\chromedriver.exe might not be compatible with the detected chrome version (118.0.5993.120); currently, chromedriver 118.0.5993.70 is recommended for chrome 118.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg timestamp="20231106 11:14:48.833" level="ERROR">Error in file 'C:\Automação com Robot\LivroRobot\bookstore-demo-test\resources\pages\cadastro.resource' on line 4: Resource file '..\page_objects\po_func_cadastro.resource' does not exist.</msg>
+<msg timestamp="20231106 11:14:49.222" level="WARN">The chromedriver version (117.0.5938.149) detected in PATH at C:\Users\renat\AppData\Local\Programs\Python\Python312\Scripts\chromedriver.exe might not be compatible with the detected chrome version (118.0.5993.120); currently, chromedriver 118.0.5993.70 is recommended for chrome 118.*, so it is advised to delete the driver in PATH and retry</msg>
 </errors>
 </robot>

@@ -12,21 +12,30 @@ Documentation    # Cenário:	Cadastro	com	sucesso	de	Pessoa	Física
 Library    SeleniumLibrary
 Library    FakerLibrary
 Library    OperatingSystem
-Resource    ../resources/page_objects/po_func_cadastro.resource
+Resource    ../resources/page_objects/po_func_cadastrar.resource
 Resource    ../resources/common..resource
 Resource    ../resources/pages/cadastro.resource
+Resource    ../resources/pages/pesquisar_produto.resource
+Resource    ../resources//dados_teste.resource
+Resource    ../resources/pages/adicionar_produto_carrinho.resource
 
 
 *** Test Cases ***
-Scenario: Success sign in as Natural Person
-    ${nome}    FakerLibrary.Name Male
-    ${emailTelefone}    FakerLibrary.Email
-    ${senha}    FakerLibrary.Password
+# Scenario: Success sign in as Natural Person
+#     ${nome}    FakerLibrary.Name Male
+#     ${emailTelefone}    FakerLibrary.Email
+#     ${senha}    FakerLibrary.Password
     
 
-    Abrir site Amazon.com   
-    Realizar novo cadastro    ${nome}    ${emailTelefone}    ${senha}    
-    ...                       msg_validação=Resolva este quebra-cabeça para proteger sua conta    
+#     Abrir site Amazon.com   
+#     Realizar novo cadastro    ${nome}    ${emailTelefone}    ${senha}    
+#     ...                       msg_validação=Resolva este quebra-cabeça para proteger sua conta    
+
+Adicionar produto ao carrinho
+    Abrir site Amazon.com
+    Pesquisar produto    nome_produto=${nome_produto}
+    Adicionar produto no carrinho    qtd_produto=6
+
     
 
 
