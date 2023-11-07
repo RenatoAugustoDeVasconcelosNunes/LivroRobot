@@ -35,6 +35,7 @@ Adicionar produto ao carrinho
     Abrir site Amazon.com
     Pesquisar produto    nome_produto=${nome_produto}
     Adicionar produto no carrinho    qtd_produto=6
+    Valida quantidade adicionada ao carrinho
 
     
 

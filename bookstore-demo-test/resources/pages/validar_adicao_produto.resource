@@ -12,5 +12,5 @@ Valida quantidade adicionada ao carrinho
     ${qtd_carrinho}    Get Text    //span[@class='a-dropdown-prompt'][contains(.,'${qtd_item_add}')]
 
      IF    ${qtd_item_add} != ${qtd_carrinho}
-        Fail    msg=A quantidade de produto solicitada para adicionar ao carrinho (${qtd_item_add}), está diferente a quantidade exibida no carrinho (${qtd_carrinho}). 
+        Fail    msg=A quantidade de produto solicitada para adicionar ao carrinho (${qtd_item_add}), está diferente da quantidade exibida no carrinho (${qtd_carrinho}). 
     END
