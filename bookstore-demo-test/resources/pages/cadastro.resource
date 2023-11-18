@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    Aqui está contida todas as keywords referente funcionalidade de cadasto
 
-Resource    ../page_objects/po_func_cadastro.resource
+Resource    ../page_objects/po_func_cadastrar.resource
 
 
 *** Keywords ***
