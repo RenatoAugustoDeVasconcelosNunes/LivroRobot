@@ -12,43 +12,52 @@ Documentation    # Cenário:	Cadastro	com	sucesso	de	Pessoa	Física
 Library    SeleniumLibrary
 Library    FakerLibrary
 Library    OperatingSystem
-Resource    ../resources/page_objects/po_func_cadastrar.resource
-Resource    ../resources/common..resource
-Resource    ../resources/pages/cadastro.resource
-Resource    ../resources/pages/pesquisar_produto.resource
-Resource    ../resources//dados_teste.resource
-Resource    ../resources/pages/adicionar_produto_carrinho.resource
+Resource    ../resources/page_objects//po_amazon/po_func_cadastrar.resource
+Resource    ../resources/common.resource
+Resource    ../resources/pages/pages_amazon/realizar_cadastro.resource
+Resource    ../resources/pages/pages_amazon/realizar_cadastro.resource
+Resource    ../resources/pages/pages_amazon/pesquisar_produto.resource
+Resource    ../resources/dados_teste_amazon.resource
+Resource    ../resources/pages/pages_amazon/adicionar_produto_carrinho.resource
+Resource    ../resources/pages/pages_amazon/realizar_cadastro.resource
+Resource    ../resources/dataprovider.resource
+Resource    ../resources/common.resource
+Resource    ../resources/pages/pages_amazon/realizar_cadastro.resource
+Resource    ../resources/pages/pages_amazon/pesquisar_produto.resource
+Resource    ../resources/pages/pages_amazon/adicionar_produto_carrinho.resource
 
 
 *** Test Cases ***
-# Scenario: Success sign in as Natural Person
-#     ${nome}    FakerLibrary.Name Male
-#     ${emailTelefone}    FakerLibrary.Email
-#     ${senha}    FakerLibrary.Password
-    
+Scenario: Success sign in as Natural Person
+    Gerar dados fake    
 
-#     Abrir site Amazon.com   
-#     Realizar novo cadastro    ${nome}    ${emailTelefone}    ${senha}    
-#     ...                       msg_validação=Resolva este quebra-cabeça para proteger sua conta    
+    Log    NOME FAKE: ${NOME_FAKE}    console=True
+    Log    EMAIL FAKE: ${EMAIL_FAKE}    console=True
+    Log    SENHA FAKE: ${SENHA_FAKE}    console=True
+    Log    SENHA FAKE: ${DATA_NASCIMENTO_FAKE}    console=True
 
-Adicionar produto ao carrinho
-    Abrir site Amazon.com
-    Pesquisar produto    nome_produto=${nome_produto}
-    Adicionar produto no carrinho    qtd_produto=6
-    Valida quantidade adicionada ao carrinho
+    # Abrir site Amazon.com   
+    # Realizar novo cadastro    ${NOME_FAKE}    ${EMAIL_FAKE}    ${SENHA_FAKE}    
+    # ...                       msg_validação=Resolva este quebra-cabeça para proteger sua conta    
 
-    
-
-
-
-
-
-
-
-
-
+# Adicionar produto ao carrinho
+#     [Tags]    Adicionar_Produto
+#     Abrir site Amazon.com
+#     Pesquisar produto    nome_produto=${nome_produto}
+#     Adicionar produto no carrinho    qtd_produto=6
+#     Valida quantidade adicionada ao carrinho
 
     
+
+
+
+
+
+
+
+
+    
+
 
 
 

@@ -2,7 +2,7 @@
 Documentation    Realiza a validação se o produto foi adicionado e se a quantidade está correta
 
 Library    SeleniumLibrary
-Resource    ../pages/adicionar_produto_carrinho.resource
+Resource    adicionar_produto_carrinho.resource
 
 
 *** Keywords ***

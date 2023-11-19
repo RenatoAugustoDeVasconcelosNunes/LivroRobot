@@ -2,7 +2,7 @@
 Documentation    Adiciona produto no carrinho de compras
 
 Library    SeleniumLibrary
-Resource    ../page_objects/po_func_adicionar_produto_carrinho.resource
+Resource    ../../page_objects/po_amazon/po_func_adicionar_produto_carrinho.resource
 Resource    validar_adicao_produto.resource
 
 *** Keywords ***

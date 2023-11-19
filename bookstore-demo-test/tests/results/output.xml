@@ -1,235 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231106 21:56:25.582" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231118 23:13:38.656" rpa="false" schemaversion="4">
 <suite id="s1" name="Testes" source="C:\Automação com Robot\LivroRobot\bookstore-demo-test\tests\testes.robot">
-<test id="s1-t1" name="Adicionar produto ao carrinho" line="34">
-<kw name="Abrir site Amazon.com" library="common.">
-<kw name="Open Browser" library="SeleniumLibrary">
-<arg>url=http://amazon.com.br</arg>
-<arg>browser=chrome</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20231106 21:56:26.147" level="INFO">Opening browser 'chrome' to base url 'http://amazon.com.br'.</msg>
-<status status="PASS" starttime="20231106 21:56:26.147" endtime="20231106 21:56:36.984"/>
+<test id="s1-t1" name="Scenario: Success sign in as Natural Person" line="31">
+<kw name="Gerar dados fake" library="dataprovider">
+<kw name="Name Male" library="FakerLibrary">
+<var>${nome}</var>
+<msg timestamp="20231118 23:13:39.112" level="INFO">${nome} = Arthur Phelps</msg>
+<status status="PASS" starttime="20231118 23:13:39.112" endtime="20231118 23:13:39.112"/>
 </kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20231106 21:56:36.984" endtime="20231106 21:56:37.123"/>
+<kw name="Email" library="FakerLibrary">
+<var>${email}</var>
+<msg timestamp="20231118 23:13:39.128" level="INFO">${email} = xwilliamson@example.net</msg>
+<status status="PASS" starttime="20231118 23:13:39.112" endtime="20231118 23:13:39.128"/>
 </kw>
-<status status="PASS" starttime="20231106 21:56:26.147" endtime="20231106 21:56:37.123"/>
+<kw name="Password" library="FakerLibrary">
+<var>${senha}</var>
+<doc>Generate a random password of the specified ``length``.</doc>
+<msg timestamp="20231118 23:13:39.128" level="INFO">${senha} = #8#TQJym&amp;z</msg>
+<status status="PASS" starttime="20231118 23:13:39.128" endtime="20231118 23:13:39.128"/>
 </kw>
-<kw name="Pesquisar produto" library="pesquisar_produto">
-<arg>nome_produto=${nome_produto}</arg>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${campo_pesquisa}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20231106 21:56:37.123" endtime="20231106 21:56:37.304"/>
+<kw name="Date Of Birth" library="FakerLibrary">
+<var>${data_nascimento}</var>
+<arg>minimum_age=18</arg>
+<arg>maximum_age=80</arg>
+<doc>Generate a random date of birth represented as a Date object,
+constrained by optional miminimum_age and maximum_age
+parameters.</doc>
+<msg timestamp="20231118 23:13:39.128" level="INFO">${data_nascimento} = 1951-04-02</msg>
+<status status="PASS" starttime="20231118 23:13:39.128" endtime="20231118 23:13:39.128"/>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${campo_pesquisa}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231106 21:56:37.305" level="INFO">Clicking element 'id:twotabsearchtextbox'.</msg>
-<status status="PASS" starttime="20231106 21:56:37.304" endtime="20231106 21:56:37.520"/>
+<kw name="Convert Date" library="DateTime">
+<var>${data}</var>
+<arg>${data_nascimento}</arg>
+<arg>result_format=%d.%m.%Y</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20231118 23:13:39.128" level="FAIL">ValueError: Unsupported input '1951-04-02'.</msg>
+<status status="FAIL" starttime="20231118 23:13:39.128" endtime="20231118 23:13:39.128"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${campo_pesquisa}</arg>
-<arg>${nome_produto}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231106 21:56:37.520" level="INFO">Typing text 'Fralda Bigfral Plus XG 7 Unidades' into text field 'id:twotabsearchtextbox'.</msg>
-<status status="PASS" starttime="20231106 21:56:37.520" endtime="20231106 21:56:37.860"/>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${NOME_FAKE}</arg>
+<arg>${nome}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20231118 23:13:39.128" endtime="20231118 23:13:39.128"/>
 </kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>${bt_pesquisar}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20231106 21:56:37.862" level="INFO">Clicking button 'id:nav-search-submit-button'.</msg>
-<status status="PASS" starttime="20231106 21:56:37.860" endtime="20231106 21:56:39.239"/>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${EMAIL_FAKE}</arg>
+<arg>${email}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20231118 23:13:39.128" endtime="20231118 23:13:39.128"/>
 </kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>${nome_produto}</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20231106 21:56:39.239" endtime="20231106 21:56:39.282"/>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${SENHA_FAKE}</arg>
+<arg>${senha}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20231118 23:13:39.128" endtime="20231118 23:13:39.128"/>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>//span[normalize-space()='${nome_produto}']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231106 21:56:39.284" level="INFO">Clicking element '//span[normalize-space()='Fralda Bigfral Plus XG 7 Unidades']'.</msg>
-<status status="PASS" starttime="20231106 21:56:39.282" endtime="20231106 21:56:41.845"/>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${DATA_NASCIMENTO_FAKE}</arg>
+<arg>${data}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20231118 23:13:39.128" endtime="20231118 23:13:39.128"/>
 </kw>
-<status status="PASS" starttime="20231106 21:56:37.123" endtime="20231106 21:56:41.845"/>
+<status status="FAIL" starttime="20231118 23:13:39.112" endtime="20231118 23:13:39.128"/>
 </kw>
-<kw name="Adicionar produto no carrinho" library="adicionar_produto_carrinho">
-<arg>qtd_produto=6</arg>
 <kw name="Log" library="BuiltIn">
-<arg>Qtd Produto: ${qtd_produto}</arg>
+<arg>NOME FAKE: ${NOME_FAKE}</arg>
 <arg>console=True</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20231106 21:56:41.845" level="INFO">Qtd Produto: 6</msg>
-<status status="PASS" starttime="20231106 21:56:41.845" endtime="20231106 21:56:41.845"/>
+<status status="NOT RUN" starttime="20231118 23:13:39.128" endtime="20231118 23:13:39.128"/>
 </kw>
-<if>
-<branch type="IF" condition="${qtd_produto} &gt; 1">
 <kw name="Log" library="BuiltIn">
-<arg>Entrou no IF</arg>
+<arg>EMAIL FAKE: ${EMAIL_FAKE}</arg>
 <arg>console=True</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20231106 21:56:41.845" level="INFO">Entrou no IF</msg>
-<status status="PASS" starttime="20231106 21:56:41.845" endtime="20231106 21:56:41.845"/>
+<status status="NOT RUN" starttime="20231118 23:13:39.128" endtime="20231118 23:13:39.128"/>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${bt_adicionar}</arg>
-<arg>timeout=10</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20231106 21:56:41.845" endtime="20231106 21:56:41.935"/>
-</kw>
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>${campo_qtd_produto}</arg>
-<arg>${qtd_produto}</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<msg timestamp="20231106 21:56:41.936" level="INFO">Selecting options from selection list 'id:quantity' by value 6.</msg>
-<status status="PASS" starttime="20231106 21:56:41.935" endtime="20231106 21:56:42.199"/>
-</kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>${bt_adicionar}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20231106 21:56:42.199" level="INFO">Clicking button 'id:add-to-cart-button'.</msg>
-<status status="PASS" starttime="20231106 21:56:42.199" endtime="20231106 21:56:43.544"/>
-</kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>Adicionado ao carrinho</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20231106 21:56:43.544" endtime="20231106 21:56:43.642"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${acessar_carrinho}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231106 21:56:43.644" level="INFO">Clicking element 'id:nav-cart-count-container'.</msg>
-<status status="PASS" starttime="20231106 21:56:43.642" endtime="20231106 21:56:44.661"/>
-</kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>Carrinho de compras</arg>
-<arg>timeout=10</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20231106 21:56:44.663" endtime="20231106 21:56:44.695"/>
-</kw>
-<kw name="Valida quantidade adicionada ao carrinho" library="validar_adicao_produto">
-<kw name="Get Value" library="SeleniumLibrary">
-<var>${qtd_item_add}</var>
-<arg>${campo_qtd_produto}</arg>
-<doc>Returns the value attribute of the element identified by ``locator``.</doc>
-<msg timestamp="20231106 21:56:44.724" level="INFO">${qtd_item_add} = 6</msg>
-<status status="PASS" starttime="20231106 21:56:44.695" endtime="20231106 21:56:44.724"/>
-</kw>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${qtd_carrinho}</var>
-<arg>//span[@class='a-dropdown-prompt'][contains(.,'${qtd_item_add}')]</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231106 21:56:44.769" level="INFO">${qtd_carrinho} = 6</msg>
-<status status="PASS" starttime="20231106 21:56:44.724" endtime="20231106 21:56:44.769"/>
-</kw>
-<if>
-<branch type="IF" condition="${qtd_item_add} != ${qtd_carrinho}">
-<kw name="Fail" library="BuiltIn">
-<arg>msg=A quantidade de produto solicitada para adicionar ao carrinho (${qtd_item_add}), está diferente a quantidade exibida no carrinho (${qtd_carrinho}).</arg>
-<doc>Fails the test with the given message and optionally alters its tags.</doc>
-<status status="NOT RUN" starttime="20231106 21:56:44.769" endtime="20231106 21:56:44.769"/>
-</kw>
-<status status="NOT RUN" starttime="20231106 21:56:44.769" endtime="20231106 21:56:44.769"/>
-</branch>
-<status status="PASS" starttime="20231106 21:56:44.769" endtime="20231106 21:56:44.769"/>
-</if>
-<status status="PASS" starttime="20231106 21:56:44.695" endtime="20231106 21:56:44.769"/>
-</kw>
-<status status="PASS" starttime="20231106 21:56:41.845" endtime="20231106 21:56:44.769"/>
-</branch>
-<branch type="ELSE">
 <kw name="Log" library="BuiltIn">
-<arg>Entrou no ELSE</arg>
+<arg>SENHA FAKE: ${SENHA_FAKE}</arg>
 <arg>console=True</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20231106 21:56:44.769" endtime="20231106 21:56:44.769"/>
+<status status="NOT RUN" starttime="20231118 23:13:39.128" endtime="20231118 23:13:39.128"/>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${bt_adicionar}</arg>
-<arg>timeout=10</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="NOT RUN" starttime="20231106 21:56:44.769" endtime="20231106 21:56:44.769"/>
+<kw name="Log" library="BuiltIn">
+<arg>SENHA FAKE: ${DATA_NASCIMENTO_FAKE}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20231118 23:13:39.128" endtime="20231118 23:13:39.128"/>
 </kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>${bt_adicionar}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20231106 21:56:44.775" endtime="20231106 21:56:44.775"/>
-</kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>Adicionado ao carrinho</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="NOT RUN" starttime="20231106 21:56:44.775" endtime="20231106 21:56:44.775"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${acessar_carrinho}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20231106 21:56:44.775" endtime="20231106 21:56:44.775"/>
-</kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>Carrinho de compras</arg>
-<arg>timeout=10</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="NOT RUN" starttime="20231106 21:56:44.775" endtime="20231106 21:56:44.775"/>
-</kw>
-<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
-<arg>${bt_fechar_pedido}</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" starttime="20231106 21:56:44.775" endtime="20231106 21:56:44.775"/>
-</kw>
-<kw name="Valida quantidade adicionada ao carrinho" library="validar_adicao_produto">
-<status status="NOT RUN" starttime="20231106 21:56:44.775" endtime="20231106 21:56:44.775"/>
-</kw>
-<status status="NOT RUN" starttime="20231106 21:56:44.769" endtime="20231106 21:56:44.775"/>
-</branch>
-<status status="PASS" starttime="20231106 21:56:41.845" endtime="20231106 21:56:44.775"/>
-</if>
-<status status="PASS" starttime="20231106 21:56:41.845" endtime="20231106 21:56:44.775"/>
-</kw>
-<kw name="Valida quantidade adicionada ao carrinho" library="validar_adicao_produto">
-<kw name="Get Value" library="SeleniumLibrary">
-<var>${qtd_item_add}</var>
-<arg>${campo_qtd_produto}</arg>
-<doc>Returns the value attribute of the element identified by ``locator``.</doc>
-<msg timestamp="20231106 21:56:44.819" level="INFO">${qtd_item_add} = 6</msg>
-<status status="PASS" starttime="20231106 21:56:44.777" endtime="20231106 21:56:44.819"/>
-</kw>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${qtd_carrinho}</var>
-<arg>//span[@class='a-dropdown-prompt'][contains(.,'${qtd_item_add}')]</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231106 21:56:44.846" level="INFO">${qtd_carrinho} = 6</msg>
-<status status="PASS" starttime="20231106 21:56:44.819" endtime="20231106 21:56:44.846"/>
-</kw>
-<if>
-<branch type="IF" condition="${qtd_item_add} != ${qtd_carrinho}">
-<kw name="Fail" library="BuiltIn">
-<arg>msg=A quantidade de produto solicitada para adicionar ao carrinho (${qtd_item_add}), está diferente a quantidade exibida no carrinho (${qtd_carrinho}).</arg>
-<doc>Fails the test with the given message and optionally alters its tags.</doc>
-<status status="NOT RUN" starttime="20231106 21:56:44.846" endtime="20231106 21:56:44.846"/>
-</kw>
-<status status="NOT RUN" starttime="20231106 21:56:44.846" endtime="20231106 21:56:44.846"/>
-</branch>
-<status status="PASS" starttime="20231106 21:56:44.846" endtime="20231106 21:56:44.846"/>
-</if>
-<status status="PASS" starttime="20231106 21:56:44.775" endtime="20231106 21:56:44.846"/>
-</kw>
-<status status="PASS" starttime="20231106 21:56:26.147" endtime="20231106 21:56:44.851"/>
+<status status="FAIL" starttime="20231118 23:13:39.112" endtime="20231118 23:13:39.128">ValueError: Unsupported input '1951-04-02'.</status>
 </test>
-<status status="PASS" starttime="20231106 21:56:25.582" endtime="20231106 21:56:44.851"/>
+<status status="FAIL" starttime="20231118 23:13:38.656" endtime="20231118 23:13:39.128"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Testes">Testes</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="Testes">Testes</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20231106 21:56:26.147" level="ERROR">Error in file 'C:\Automação com Robot\LivroRobot\bookstore-demo-test\resources\pages\cadastro.resource' on line 4: Resource file '..\page_objects\po_func_cadastro.resource' does not exist.</msg>
+<msg timestamp="20231118 23:13:39.097" level="ERROR">Error in file 'C:\Automação com Robot\LivroRobot\bookstore-demo-test\resources\pages\pages_amazon\realizar_cadastro.resource' on line 4: Resource file '..\page_objects\po_func_cadastrar.resource' does not exist.</msg>
+<msg timestamp="20231118 23:13:39.112" level="ERROR">Error in file 'C:\Automação com Robot\LivroRobot\bookstore-demo-test\resources\pages\pages_amazon\pesquisar_produto.resource' on line 3: Resource file '..\page_objects\po_func_pesquisar_produto.resource' does not exist.</msg>
 </errors>
 </robot>
