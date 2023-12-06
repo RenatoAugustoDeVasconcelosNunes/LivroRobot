@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231106 21:50:11.141" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231205 20:32:23.151" rpa="false" schemaversion="4">
 <suite id="s1" name="Robot Interactive Console" source="c:\Users\renat\.vscode\extensions\robocorp.robotframework-lsp-1.11.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" library="MainLoop">
-<kw name="Abrir site Amazon.com">
-<msg timestamp="20231106 21:50:11.806" level="FAIL">No keyword with name 'Abrir site Amazon.com' found.</msg>
-<status status="FAIL" starttime="20231106 21:50:11.806" endtime="20231106 21:50:11.806"/>
+<kw name="Teste">
+<arg>teste@teste.com</arg>
+<arg>123456</arg>
+<arg>${EMPTY}</arg>
+<arg>Insira seu nome</arg>
+<msg timestamp="20231205 20:32:23.770" level="FAIL">No keyword with name 'Teste' found.</msg>
+<status status="FAIL" starttime="20231205 20:32:23.770" endtime="20231205 20:32:23.770"/>
 </kw>
-<kw name="Pesquisar produto">
-<arg>nome_produto=${nome_produto}</arg>
-<status status="NOT RUN" starttime="20231106 21:50:11.806" endtime="20231106 21:50:11.806"/>
+<status status="PASS" starttime="20231205 20:32:23.182" endtime="20231205 20:32:26.634"/>
 </kw>
-<kw name="Adicionar produto no carrinho">
-<arg>qtd_produto=6</arg>
-<status status="NOT RUN" starttime="20231106 21:50:11.813" endtime="20231106 21:50:11.813"/>
-</kw>
-<kw name="Valida quantidade adicionada ao carrinho">
-<status status="NOT RUN" starttime="20231106 21:50:11.813" endtime="20231106 21:50:11.813"/>
-</kw>
-<status status="PASS" starttime="20231106 21:50:11.168" endtime="20231106 21:50:15.754"/>
-</kw>
-<status status="PASS" starttime="20231106 21:50:11.168" endtime="20231106 21:50:15.754"/>
+<status status="PASS" starttime="20231205 20:32:23.166" endtime="20231205 20:32:26.634"/>
 </test>
-<status status="PASS" starttime="20231106 21:50:11.155" endtime="20231106 21:50:15.754"/>
+<status status="PASS" starttime="20231205 20:32:23.151" endtime="20231205 20:32:26.635"/>
 </suite>
 <statistics>
 <total>
