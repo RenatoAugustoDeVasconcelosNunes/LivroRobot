@@ -25,16 +25,18 @@ Resource    ../resources/common.resource
 Resource    ../resources/pages/pages_amazon/realizar_cadastro.resource
 Resource    ../resources/pages/pages_amazon/pesquisar_produto.resource
 Resource    ../resources/pages/pages_amazon/adicionar_produto_carrinho.resource
+Resource    ../resources/database.resource
+Resource    ../resources/queries/data_base_queries.resource
 
 
 *** Test Cases ***
-Scenario: Success sign in as Natural Person
-    Gerar dados fake    
+# Scenario: Success sign in as Natural Person
+#     Gerar dados fake    
 
-    Log    NOME FAKE: ${NOME_FAKE}    console=True
-    Log    EMAIL FAKE: ${EMAIL_FAKE}    console=True
-    Log    SENHA FAKE: ${SENHA_FAKE}    console=True
-    Log    SENHA FAKE: ${DATA_NASCIMENTO_FAKE}    console=True
+#     Log    NOME FAKE: ${NOME_FAKE}    console=True
+#     Log    EMAIL FAKE: ${EMAIL_FAKE}    console=True
+#     Log    SENHA FAKE: ${SENHA_FAKE}    console=True
+#     Log    SENHA FAKE: ${DATA_NASCIMENTO_FAKE}    console=True
 
     # Abrir site Amazon.com   
     # Realizar novo cadastro    ${NOME_FAKE}    ${EMAIL_FAKE}    ${SENHA_FAKE}    
@@ -43,9 +45,12 @@ Scenario: Success sign in as Natural Person
 # Adicionar produto ao carrinho
 #     [Tags]    Adicionar_Produto
 #     Abrir site Amazon.com
-#     Pesquisar produto    nome_produto=${nome_produto}
+    # Pesquisar produto    nome_produto=${nome_produto}
 #     Adicionar produto no carrinho    qtd_produto=6
 #     Valida quantidade adicionada ao carrinho
+
+
+
 
     
 

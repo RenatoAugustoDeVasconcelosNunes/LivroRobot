@@ -1,118 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231205 21:06:56.607" rpa="false" schemaversion="4">
-<suite id="s1" name="Estudo Test Template" source="c:\Automação com Robot\LivroRobot\bookstore-demo-test\tests\estudo_test_template.robot">
-<test id="s1-t1" name="Teste Campos Vazios" line="15">
-<kw name="Realizar novo cadastro" library="realizar_cadastro">
-<arg>${EMPTY}</arg>
-<arg>${EMPTY}</arg>
-<arg>${EMPTY}</arg>
-<arg>${EMPTY}</arg>
-<arg>Insira seu nome</arg>
-<arg>Digite seu e-mail ou número de telefone celular</arg>
-<arg>Mínimo de 6 caracteres necessários</arg>
-<kw name="Abrir site Amazon.com" library="common">
-<kw name="Open Browser" library="SeleniumLibrary">
-<arg>url=${url_amazon}</arg>
-<arg>browser=${browser_chrome}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20231205 21:06:56.790" level="INFO">Opening browser 'chrome' to base url 'http://amazon.com.br'.</msg>
-<status status="PASS" starttime="20231205 21:06:56.790" endtime="20231205 21:07:00.551"/>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231226 14:50:06.110" rpa="false" schemaversion="4">
+<suite id="s1" name="Estudo Database" source="c:\Automação com Robot\LivroRobot\bookstore-demo-test\tests\estudo_database.robot">
+<test id="s1-t1" name="Retornar mensagem de alerta para produtos com quantidade zero" line="31">
+<kw name="Open database connection" library="database">
+<kw name="Connect To Database" library="DatabaseLibrary">
+<arg>pymysql</arg>
+<arg>${DB_NAME}</arg>
+<arg>${DB_USER}</arg>
+<arg>${DB_PASS}</arg>
+<arg>${DB_HOST}</arg>
+<arg>${DB_PORT}</arg>
+<doc>Loads the DB API 2.0 module given ``dbapiModuleName`` then uses it to
+connect to the database using provided parameters such as ``dbName``, ``dbUsername``, and ``dbPassword``.</doc>
+<msg timestamp="20231226 14:50:06.172" level="INFO">Connecting using : pymysql.connect(db=robotframework, user=root, passwd=***, host=localhost, port=3306, charset=None)</msg>
+<status status="PASS" starttime="20231226 14:50:06.150" endtime="20231226 14:50:06.183"/>
 </kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20231205 21:07:00.555" endtime="20231205 21:07:00.684"/>
+<status status="PASS" starttime="20231226 14:50:06.150" endtime="20231226 14:50:06.183"/>
 </kw>
-<status status="PASS" starttime="20231205 21:06:56.790" endtime="20231205 21:07:00.684"/>
+<kw name="Valida estoque" library="data_base_queries">
+<var>${produtos}</var>
+<kw name="Query" library="DatabaseLibrary">
+<var>@{produtos}</var>
+<arg>SELECT nome FROM produtos WHERE quantidade = 0;</arg>
+<doc>Runs a query with the ``selectStatement`` and returns the result as a list of rows.
+The type of row values depends on the database module -
+usually they are tuples or tuple-like objects.</doc>
+<msg timestamp="20231226 14:50:06.183" level="INFO">Executing : Query  |  SELECT nome FROM produtos WHERE quantidade = 0; </msg>
+<msg timestamp="20231226 14:50:06.186" level="INFO">@{produtos} = [ ('Fralda',) | ('Bermuda',) ]</msg>
+<status status="PASS" starttime="20231226 14:50:06.183" endtime="20231226 14:50:06.186"/>
 </kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>Comece aqui</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20231205 21:07:00.684" endtime="20231205 21:07:00.745"/>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>@{produtos}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20231226 14:50:06.186" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20231226 14:50:06.186" endtime="20231226 14:50:06.186"/>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${comece_aqui}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231205 21:07:00.745" level="INFO">Clicking element '//div[@class='nav-signin-tooltip-footer']//a[@class='nav-a'][normalize-space()='Comece aqui.']'.</msg>
-<status status="PASS" starttime="20231205 21:07:00.745" endtime="20231205 21:07:01.670"/>
+<msg timestamp="20231226 14:50:06.186" level="INFO">${produtos} = [('Fralda',), ('Bermuda',)]</msg>
+<status status="PASS" starttime="20231226 14:50:06.183" endtime="20231226 14:50:06.186"/>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${seu_nome}</arg>
-<arg>timeout=5</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20231205 21:07:01.670" endtime="20231205 21:07:01.705"/>
+<kw name="Log" library="BuiltIn">
+<arg>{produtos}: ${produtos}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231226 14:50:06.186" level="INFO">{produtos}: [('Fralda',), ('Bermuda',)]</msg>
+<status status="PASS" starttime="20231226 14:50:06.186" endtime="20231226 14:50:06.186"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${seu_nome}</arg>
-<arg>${nome}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231205 21:07:01.705" level="INFO">Typing text '' into text field 'id:ap_customer_name'.</msg>
-<status status="PASS" starttime="20231205 21:07:01.705" endtime="20231205 21:07:01.761"/>
+<kw name="Log" library="BuiltIn">
+<arg>Os produtos ${produtos} estão com estoque zerados.</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231226 14:50:06.186" level="INFO">Os produtos [('Fralda',), ('Bermuda',)] estão com estoque zerados.</msg>
+<status status="PASS" starttime="20231226 14:50:06.186" endtime="20231226 14:50:06.186"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${email_ou_telefone}</arg>
-<arg>${emailTelefone}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231205 21:07:01.761" level="INFO">Typing text '' into text field 'id:ap_email'.</msg>
-<status status="PASS" starttime="20231205 21:07:01.761" endtime="20231205 21:07:01.820"/>
+<kw name="Close database connection" library="database" type="TEARDOWN">
+<kw name="Disconnect From Database" library="DatabaseLibrary">
+<doc>Disconnects from the database.</doc>
+<msg timestamp="20231226 14:50:06.186" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20231226 14:50:06.186" endtime="20231226 14:50:06.186"/>
 </kw>
-<kw name="Input Password" library="SeleniumLibrary">
-<arg>${password}</arg>
-<arg>${senha}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20231205 21:07:01.824" level="INFO">Typing password into text field 'id:ap_password'.</msg>
-<msg timestamp="20231205 21:07:01.845" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20231205 21:07:01.876" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20231205 21:07:01.821" endtime="20231205 21:07:01.876"/>
+<status status="PASS" starttime="20231226 14:50:06.186" endtime="20231226 14:50:06.186"/>
 </kw>
-<kw name="Input Password" library="SeleniumLibrary">
-<arg>${confirma_senha}</arg>
-<arg>${conf_senha}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20231205 21:07:01.876" level="INFO">Typing password into text field 'id:ap_password_check'.</msg>
-<msg timestamp="20231205 21:07:01.911" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20231205 21:07:01.943" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20231205 21:07:01.876" endtime="20231205 21:07:01.943"/>
-</kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>${button_continue}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20231205 21:07:01.943" level="INFO">Clicking button 'id:continue'.</msg>
-<status status="PASS" starttime="20231205 21:07:01.943" endtime="20231205 21:07:02.003"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20231205 21:07:04.003" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20231205 21:07:02.003" endtime="20231205 21:07:04.003"/>
-</kw>
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>${msg_validação_1}</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20231205 21:07:04.005" level="INFO">Current page contains text 'Insira seu nome'.</msg>
-<status status="PASS" starttime="20231205 21:07:04.005" endtime="20231205 21:07:04.005"/>
-</kw>
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>${msg_validação_2}</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20231205 21:07:04.021" level="INFO">Current page contains text 'Digite seu e-mail ou número de telefone celular'.</msg>
-<status status="PASS" starttime="20231205 21:07:04.005" endtime="20231205 21:07:04.021"/>
-</kw>
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>${msg_validação_3}</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20231205 21:07:04.040" level="INFO">Current page contains text 'Mínimo de 6 caracteres necessários'.</msg>
-<status status="PASS" starttime="20231205 21:07:04.021" endtime="20231205 21:07:04.040"/>
-</kw>
-<status status="PASS" starttime="20231205 21:06:56.790" endtime="20231205 21:07:04.040"/>
-</kw>
-<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20231205 21:07:04.040" endtime="20231205 21:07:06.170"/>
-</kw>
-<status status="PASS" starttime="20231205 21:06:56.790" endtime="20231205 21:07:06.170"/>
+<status status="PASS" starttime="20231226 14:50:06.150" endtime="20231226 14:50:06.198"/>
 </test>
-<doc>Automação utilizando Test Template</doc>
-<status status="PASS" starttime="20231205 21:06:56.607" endtime="20231205 21:07:06.170"/>
+<status status="PASS" starttime="20231226 14:50:06.110" endtime="20231226 14:50:06.198"/>
 </suite>
 <statistics>
 <total>
@@ -121,7 +70,7 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Estudo Test Template">Estudo Test Template</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Estudo Database">Estudo Database</stat>
 </suite>
 </statistics>
 <errors>

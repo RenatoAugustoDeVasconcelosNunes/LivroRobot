@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Realiza a pesquisa de produtos
-Resource    ../page_objects/po_func_pesquisar_produto.resource
+Resource    ../../page_objects/po_amazon/po_func_pesquisar_produto.resource
 
 
 *** Keywords ***
